@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "e2-ttt"
+version = "1.0.0"
+description = "E2-TTT: Expressive and Efficient Test-Time Training"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Zeyun Zhong" }]
+keywords = ["test-time training", "linear attention", "language model", "long context"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+# NOTE: torch, triton and flash-attn are intentionally NOT listed here.
+# They must match the local CUDA toolchain and are installed via
+# `environment.yml` (or manually) before `pip install -e .`.
+dependencies = [
+    "flash-linear-attention==0.4.1",
+    "transformers>=4.57,<5",
+    "einops",
+    "numpy",
+]
+
+[project.urls]
+Paper = "https://arxiv.org/abs/2608.21308"
+Repository = "https://github.com/zeyun-zhong/E2-TTT"
+
+[tool.setuptools.packages.find]
+include = ["e2_ttt*"]

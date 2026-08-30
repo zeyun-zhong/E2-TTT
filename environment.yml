@@ -1,0 +1,50 @@
+# Conda environment for E2-TTT (Linux x86-64, Python 3.12, CUDA 12.8).
+#
+#   conda env create -f environment.yml
+#
+# Everything except Python itself comes from pip wheels: the PyPI torch 2.8.0
+# wheels are the CUDA 12.8 builds and already ship the CUDA runtime, so no conda
+# CUDA/toolchain packages are needed.
+name: e2ttt
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - torch==2.8.0
+      - triton==3.4.0
+      - torchdata==0.11.0
+      # Prebuilt flash-attn wheel for cp312 / torch 2.8 / cu12 / cxx11abi=TRUE.
+      # PyPI ships only an sdist, which would compile for hours against the
+      # local nvcc; pick a different wheel from the same release if you change
+      # the Python or torch version.
+      - https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp312-cp312-linux_x86_64.whl
+
+      # --- models ------------------------------------------------------------
+      - flash-linear-attention==0.4.1
+      - transformers==4.57.1
+      - einops==0.8.1
+      - numpy==2.3.3
+
+      # --- training framework (training/) ------------------------------------
+      - torchtitan @ git+https://github.com/pytorch/torchtitan.git@0b44d4c
+      - datasets==4.2.0
+      - psutil==7.1.0
+      - tyro==0.9.35              # imported by torchtitan.config_manager, but
+                                  # missing from torchtitan's own dependencies
+      # optional loggers, both off by default in flame/models/fla.toml
+      - tensorboard==2.20.0
+      - wandb==0.22.1
+
+      # --- evaluation --------------------------------------------------------
+      # lm-eval itself is installed from the vendored copy:
+      #   pip install -e lm-evaluation-harness
+      # These are its task extras, which that command does not pull in:
+      - accelerate==1.10.1        # lm_eval[hf]
+      - nltk==3.9.2               # lm_eval[ruler]
+      - wonderwords==3.0.1        # lm_eval[ruler]
+      - scipy==1.16.3             # lm_eval[ruler]
+      - jieba==0.42.1             # lm_eval[longbench]
+      - fuzzywuzzy==0.18.0        # lm_eval[longbench]
+      - rouge==1.0.1              # lm_eval[longbench]

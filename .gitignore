@@ -1,0 +1,65 @@
+# ---- Training / evaluation artefacts (large, machine-local) ----
+training/exp/
+training/datasets/
+training/hub/
+training/xet/
+training/results/
+# same dirs if a script is ever run from the repo root
+/exp/
+/results/
+/outputs/
+/checkpoints/
+wandb/
+tmp/
+
+# ---- Model weights & bulk data (never belong in git) ----
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.gguf
+*.arrow
+*.npz
+*.npy
+
+# ---- Logs ----
+*.log
+logs/
+slurm-*.out
+nohup.out
+core.*
+
+# ---- Secrets / credentials ----
+.env
+.env.*
+*.pem
+.netrc
+.hf_token
+.huggingface/
+secrets.*
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ---- Virtual environments ----
+.venv/
+venv/
+ENV/
+env/
+
+# ---- Editors / OS ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
