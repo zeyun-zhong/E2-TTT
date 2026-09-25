@@ -4,6 +4,7 @@ Zeyun Zhong<sup>1,3</sup> · Joya Chen<sup>2</sup> · Manuel Martin<sup>3</sup> 
 
 <sup>1</sup>Karlsruhe Institute of Technology (KIT) · <sup>2</sup>National University of Singapore · <sup>3</sup>Fraunhofer IOSB · <sup>4</sup>Lamarr Institute for Machine Learning and Artificial Intelligence · <sup>5</sup>University of Bonn
 
+[![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-blue.svg)](https://neurips.cc/Conferences/2026)
 [![arXiv](https://img.shields.io/badge/arXiv-2608.21308-b31b1b.svg)](https://arxiv.org/abs/2608.21308)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Checkpoints-ffd21e.svg)](https://huggingface.co/collections/zeyun-zhong/e2-ttt)
 
@@ -19,6 +20,10 @@ stays fully chunk-parallel; the update rule keeps its temporal structure.
 This repository contains the language-modeling code: the `e2_ttt` package (`E²-TTT_MLP` and
 `E²-TTT_SwiGLU`), the training/evaluation framework, and the configurations behind the paper's
 E²-TTT and LaCT results.
+
+## News
+
+- **2026-09**: E²-TTT is accepted to NeurIPS 2026! 🎉
 
 ## Use E²-TTT in your own model
 
@@ -177,12 +182,12 @@ Each vendored directory keeps its own LICENSE and NOTICE.
 ## Citation
 
 ```bibtex
-@article{zhong2026e2ttt,
-  title   = {Rethinking Expressivity and Efficiency in Test-Time Training},
-  author  = {Zhong, Zeyun and Chen, Joya and Martin, Manuel and
-             Diederichs, Frederik and Gall, Juergen and Beyerer, Juergen},
-  journal = {arXiv preprint arXiv:2608.21308},
-  year    = {2026}
+@inproceedings{zhong2026e2ttt,
+  title     = {Rethinking Expressivity and Efficiency in Test-Time Training},
+  author    = {Zhong, Zeyun and Chen, Joya and Martin, Manuel and
+               Diederichs, Frederik and Gall, Juergen and Beyerer, Juergen},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026}
 }
 ```
 
